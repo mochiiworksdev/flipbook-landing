@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#F4EFE4" />
+    <title>Flipbook — A notebook that feels like real paper</title>
+    <meta
+      name="description"
+      content="A local-first notebook app with real page flips, rich text, drawing, and a sticky wall. Free, offline, and private."
+    />
+
+    <meta
+      property="og:title"
+      content="Flipbook — A notebook that feels like real paper"
+    />
+    <meta
+      property="og:description"
+      content="Write, draw, flip pages, and pin sticky notes — all offline, all private."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/screenshots/hero.png" />
+
+    <link rel="icon" type="image/svg+xml" href="/screenshots/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("flipbook.landing.theme");
+          if (saved === "lamp" || saved === "dark") {
+            document.documentElement.classList.add(saved);
+          }
+        } catch (e) {
+          /* ignore */
+        }
+      })();
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="book">
+      <nav class="nav" id="navDock">
+        <div class="nav-inner">
+          <a href="#" class="nav-brand">
+            <svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true">
+              <defs>
+                <linearGradient id="cover" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#5C3A21" />
+                  <stop offset="100%" stop-color="#432A18" />
+                </linearGradient>
+                <linearGradient id="page" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#FBF7EC" />
+                  <stop offset="100%" stop-color="#EDE3CC" />
+                </linearGradient>
+                <linearGradient id="ribbon" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#E8C46A" />
+                  <stop offset="100%" stop-color="#B8862A" />
+                </linearGradient>
+              </defs>
+              <rect
+                x="6"
+                y="10"
+                width="52"
+                height="44"
+                rx="4"
+                fill="url(#cover)"
+              />
+              <path d="M 10 14 L 32 14 L 32 50 L 10 50 Z" fill="url(#page)" />
+              <path d="M 32 14 L 54 14 L 54 50 L 32 50 Z" fill="url(#page)" />
+              <line
+                x1="32"
+                y1="14"
+                x2="32"
+                y2="50"
+                stroke="#C9BFA8"
+                stroke-width="0.8"
+              />
+              <path
+                d="M 32 12 L 38 12 L 38 30 L 35 27 L 32 30 Z"
+                fill="url(#ribbon)"
+                stroke="#8A6618"
+                stroke-width="0.5"
+              />
+            </svg>
+            <span>Flipbook</span>
+          </a>
+
+          <div class="nav-links">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#demo" class="nav-link">Demo</a>
+            <a href="#support" class="nav-link">Support</a>
+            <a href="privacy.html" class="nav-link">Privacy</a>
+            <a href="terms.html" class="nav-link">Terms</a>
+          </div>
+
+          <div class="nav-actions">
+            <button
+              class="nav-theme"
+              id="themeToggle"
+              aria-label="Cycle theme"
+              title="Switch theme"
+            >
+              <span class="theme-icon">☀</span>
+            </button>
+            <a
+              href="https://YOUR_DEPLOYED_APP_URL"
+              class="nav-cta"
+              target="_blank"
+              rel="noopener"
+            >
+              Open app
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <main class="page">
+        <header class="hero">
+          <div class="hero-text">
+            <h1>A notebook that feels like<br />real paper.</h1>
+            <p class="lede">
+              Write with rich formatting. Draw with your finger or stylus. Flip
+              pages. Pin sticky notes and connect them into a detective board.
+              All offline, all private, all yours.
+            </p>
+
+            <div class="cta-row">
+              <a
+                href="https://YOUR_DEPLOYED_APP_URL"
+                class="btn btn-primary"
+                target="_blank"
+                rel="noopener"
+              >
+                Open in browser
+              </a>
+              <a
+                href="https://mochiiworks.itch.io/flipbook"
+                class="btn btn-itch"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3.13 1.34C2.1 2.04 1.66 3.1 1.14 4.1l-.68 1.26c-.3.57-.37 1.1-.37 1.74v10.66c0 .64.07 1.17.37 1.74l.68 1.26c.52 1 0.96 2.06 1.99 2.76.8.54 1.93.52 2.82.22l1.5-.5c.87-.3 1.5-1.17 1.5-2.1v-1.35c0-.63.5-1.14 1.14-1.14h8.62c.63 0 1.14.5 1.14 1.14v1.35c0 .93.63 1.8 1.5 2.1l1.5.5c.9.3 2.02.32 2.82-.22 1.03-.7 1.47-1.76 1.99-2.76l.68-1.26c.3-.57.37-1.1.37-1.74V7.1c0-.64-.07-1.17-.37-1.74l-.68-1.26c-.52-1-.96-2.06-1.99-2.76-.8-.54-1.93-.52-2.82-.22l-1.5.5c-.87.3-1.5 1.17-1.5 2.1v1.35c0 .63-.5 1.14-1.14 1.14H8.32c-.63 0-1.14-.5-1.14-1.14V3.42c0-.93-.63-1.8-1.5-2.1l-1.5-.5c-.9-.3-2.02-.32-2.82.22z"
+                  />
+                </svg>
+                Get it on itch.io
+              </a>
+            </div>
+
+            <p class="small-note">No sign-up. No cloud. No tracking. Free.</p>
+
+            <!-- QR CODE SECTION — moved inside .hero-text -->
+            <div class="qr-block">
+              <div class="qr-code" id="qrCodeContainer">
+                <!-- The QR code will be injected here by JavaScript -->
+              </div>
+              <div class="qr-text">
+                <strong>Scan to download</strong>
+                <span
+                  >Point your phone's camera here to get the Android app.</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-image">
+            <img
+              src="screenshots/hero.png"
+              alt="An open Flipbook notebook with handwriting on the page"
+            />
+          </div>
+        </header>
+
+        <section id="features" class="features">
+          <h2>What makes it different</h2>
+
+          <div class="feature-grid">
+            <article class="feature">
+              <div class="feature-icon">📖</div>
+              <h3>Real page flips</h3>
+              <p>
+                Open the cover, turn pages, watch them bend. Not a slideshow —
+                an actual book with weight and shadow and sound.
+              </p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon">✎</div>
+              <h3>Type and draw</h3>
+              <p>
+                Bold, italic, highlight, colors, fonts. Pen, sign pen,
+                highlighter, shapes, lasso. Everything you'd want in one place.
+              </p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon">📌</div>
+              <h3>Sticky wall</h3>
+              <p>
+                A corkboard for quick thoughts. Colorful sticky notes you can
+                drag, pin, connect. Detective-board mode for brainstorming.
+              </p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon">🔒</div>
+              <h3>Yours, on your device</h3>
+              <p>
+                No accounts, no servers, no analytics. Everything lives in your
+                browser's storage. Export the whole library as one file anytime.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="demo" class="screenshots">
+          <h2>See it in action</h2>
+
+          <div class="screenshot-row">
+            <figure>
+              <img
+                src="screenshots/type-mode.png"
+                alt="Typing rich text into a Flipbook page"
+              />
+              <figcaption>Type mode</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="screenshots/draw-mode.png"
+                alt="Drawing with a pen tool on a Flipbook page"
+              />
+              <figcaption>Draw mode</figcaption>
+            </figure>
+          </div>
+
+          <div class="screenshot-row">
+            <figure>
+              <img
+                src="screenshots/sticky-wall.png"
+                alt="A corkboard with colorful sticky notes connected by strings"
+              />
+              <figcaption>Sticky wall</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="screenshots/flip.png"
+                alt="A page mid-flip showing the back face"
+              />
+              <figcaption>Page flip</figcaption>
+            </figure>
+          </div>
+
+          <div class="screenshot-single">
+            <img src="screenshots/dark-mode.png" alt="Flipbook in dark mode" />
+            <p class="caption">Dark mode for evenings and reading in bed.</p>
+          </div>
+        </section>
+
+        <section class="why">
+          <div class="why-inner">
+            <h2>Why this exists</h2>
+            <p>
+              Every note app I tried felt like a spreadsheet with a text box. I
+              wanted something that felt like a real notebook — paper, ink, page
+              turns, sticky notes. Not another cloud service that wants my
+              email. So I made one.
+            </p>
+            <p>
+              It's free, it's offline, and it's yours. If it's useful to you, a
+              tip is always appreciated but never expected.
+            </p>
+          </div>
+        </section>
+
+        <section id="support" class="support">
+          <h2>Support the work</h2>
+          <p class="support-lede">
+            Flipbook is free, and it always will be. If it's useful to you and
+            you'd like to say thanks, you can leave a tip. No subscriptions, no
+            paid tiers, no pressure.
+          </p>
+
+          <div class="support-buttons">
+            <a
+              href="https://buymeacoffee.com/mochiiworks"
+              class="btn btn-coffee"
+              target="_blank"
+              rel="noopener"
+            >
+              ☕ Buy me a coffee
+            </a>
+            <a
+              href="mailto:mochiiworksdotmochi@gmail.com"
+              class="btn btn-ghost"
+            >
+              ✉ Say hello
+            </a>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <div class="footer-inner">
+            <div>
+              <strong>Flipbook</strong> by MochiiWorks
+              <br />
+              <span class="muted"
+                >Built with React, Capacitor, and a lot of coffee.</span
+              >
+            </div>
+            <div class="footer-links">
+              <a href="privacy.html">Privacy</a>
+              <a href="terms.html">Terms</a>
+              <a href="mailto:mochiiworksdotmochi@gmail.com">Contact</a>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        const nav = document.getElementById("navDock");
+        if (!nav) return;
+
+        let ticking = false;
+        const update = () => {
+          if (window.scrollY > 40) nav.classList.add("scrolled");
+          else nav.classList.remove("scrolled");
+          ticking = false;
+        };
+
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (!ticking) {
+              requestAnimationFrame(update);
+              ticking = true;
+            }
+          },
+          { passive: true },
+        );
+
+        update();
+      })();
+    </script>
+
+    <script>
+      (function () {
+        const KEY = "flipbook.landing.theme";
+        const ORDER = ["light", "lamp", "dark"];
+        const ICONS = { light: "☀", lamp: "✦", dark: "◐" };
+        const toggle = document.getElementById("themeToggle");
+        if (!toggle) return;
+
+        const iconEl = toggle.querySelector(".theme-icon");
+
+        const current = () => {
+          if (document.documentElement.classList.contains("dark"))
+            return "dark";
+          if (document.documentElement.classList.contains("lamp"))
+            return "lamp";
+          return "light";
+        };
+
+        const apply = (theme) => {
+          document.documentElement.classList.remove("dark", "lamp");
+          if (theme !== "light") document.documentElement.classList.add(theme);
+          iconEl.textContent = ICONS[theme] || "☀";
+          toggle.setAttribute(
+            "title",
+            theme === "light"
+              ? "Light mode — click for Lamp"
+              : theme === "lamp"
+                ? "Lamp mode — click for Dark"
+                : "Dark mode — click for Light",
+          );
+          try {
+            localStorage.setItem(KEY, theme);
+          } catch (e) {}
+        };
+
+        const cycle = () => {
+          const idx = ORDER.indexOf(current());
+          const next = ORDER[(idx + 1) % ORDER.length];
+          apply(next);
+          toggle.classList.add("spinning");
+          setTimeout(() => toggle.classList.remove("spinning"), 500);
+        };
+
+        toggle.addEventListener("click", cycle);
+        apply(current());
+      })();
+    </script>
+
+    <!-- QR Code Generator -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script>
+      (function () {
+        const container = document.getElementById("qrCodeContainer");
+        if (!container) return;
+
+        // 🔽 REPLACE THIS WITH YOUR ACTUAL APK DOWNLOAD URL
+        const apkUrl = "https://mochiiworks.itch.io/flipbook";
+
+        QRCode.toCanvas(
+          apkUrl,
+          {
+            width: 160,
+            margin: 1,
+            color: {
+              dark: "#2E271B",
+              light: "#FFFFFF",
+            },
+          },
+          function (err, canvas) {
+            if (err) {
+              console.error("QR code failed:", err);
+              container.textContent = "QR unavailable";
+              return;
+            }
+            container.innerHTML = "";
+            container.appendChild(canvas);
+          },
+        );
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy — Flipbook</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("flipbook.landing.theme");
+          if (saved === "lamp" || saved === "dark") {
+            document.documentElement.classList.add(saved);
+          }
+        } catch (e) {
+          /* ignore */
+        }
+      })();
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- NAV DOCK (same as index.html and terms.html) -->
+    <nav class="nav" id="navDock">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-brand">
+          <svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true">
+            <defs>
+              <linearGradient id="cover" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5C3A21" />
+                <stop offset="100%" stop-color="#432A18" />
+              </linearGradient>
+              <linearGradient id="page" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#FBF7EC" />
+                <stop offset="100%" stop-color="#EDE3CC" />
+              </linearGradient>
+              <linearGradient id="ribbon" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#E8C46A" />
+                <stop offset="100%" stop-color="#B8862A" />
+              </linearGradient>
+            </defs>
+            <rect
+              x="6"
+              y="10"
+              width="52"
+              height="44"
+              rx="4"
+              fill="url(#cover)"
+            />
+            <path d="M 10 14 L 32 14 L 32 50 L 10 50 Z" fill="url(#page)" />
+            <path d="M 32 14 L 54 14 L 54 50 L 32 50 Z" fill="url(#page)" />
+            <line
+              x1="32"
+              y1="14"
+              x2="32"
+              y2="50"
+              stroke="#C9BFA8"
+              stroke-width="0.8"
+            />
+            <path
+              d="M 32 12 L 38 12 L 38 30 L 35 27 L 32 30 Z"
+              fill="url(#ribbon)"
+              stroke="#8A6618"
+              stroke-width="0.5"
+            />
+          </svg>
+          <span>Flipbook</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="index.html#features" class="nav-link">Features</a>
+          <a href="index.html#demo" class="nav-link">Demo</a>
+          <a href="index.html#support" class="nav-link">Support</a>
+          <a href="privacy.html" class="nav-link">Privacy</a>
+          <a href="terms.html" class="nav-link">Terms</a>
+        </div>
+
+        <div class="nav-actions">
+          <button
+            class="nav-theme"
+            id="themeToggle"
+            aria-label="Cycle theme"
+            title="Switch theme"
+          >
+            <span class="theme-icon">☀</span>
+          </button>
+          <a
+            href="https://YOUR_DEPLOYED_APP_URL"
+            class="nav-cta"
+            target="_blank"
+            rel="noopener"
+          >
+            Open app
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="book">
+      <main class="page page-legal">
+        <h1>Privacy</h1>
+        <p class="last-updated">Last updated: September 2026</p>
+
+        <p>
+          Flipbook is built to keep your notes on your device. This page
+          explains, in plain language, what that means.
+        </p>
+
+        <h2>What we collect</h2>
+        <p>
+          <strong>Nothing.</strong> We don't have a server. There's no account,
+          no sign-up, no email collected, no usage analytics, no tracking
+          pixels, no cookies for advertising.
+        </p>
+
+        <h2>Where your notes live</h2>
+        <p>
+          Your notebooks, drawings, and sticky notes are stored
+          <strong>locally on your device</strong> — in your browser's IndexedDB
+          storage (on the web version) or the app's private storage (on
+          Android). They never leave your device.
+        </p>
+
+        <h2>What leaves your device</h2>
+        <p>
+          The only external request Flipbook makes is to
+          <strong>Google Fonts</strong>, to download the typefaces used for
+          headings and text (Lora, Inter, and JetBrains Mono). Google Fonts is
+          cached after the first load, so the app works completely offline after
+          the first visit.
+        </p>
+        <p>
+          If you'd rather avoid even that, you can host your own copy of the app
+          with self-hosted fonts. Nothing in the app prevents that.
+        </p>
+
+        <h2>Exports and backups</h2>
+        <p>
+          You can export your entire library as a single
+          <code>.flipbook</code> file at any time. That file is downloaded
+          directly to your device — we never see it.
+        </p>
+        <p>
+          If you share an export with someone (via email, cloud storage, etc.),
+          that file leaves your control. Treat it like any other personal file.
+        </p>
+
+        <h2>Clearing your data</h2>
+        <p>
+          Your notes are tied to your browser or app installation. If you clear
+          your browser data, uninstall the app, or reset your device, your notes
+          are gone.
+          <strong>Export regularly</strong> if you want a backup.
+        </p>
+
+        <h2>Children</h2>
+        <p>
+          Flipbook is safe for all ages. It collects no personal information
+          from anyone, including children.
+        </p>
+
+        <h2>Changes to this page</h2>
+        <p>
+          If this page changes, the "last updated" date at the top will change
+          too. Since Flipbook collects no data, there's nothing to notify you
+          about.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions? Email
+          <a href="mailto:mochiiworksdotmochi@gmail.com"
+            >mochiiworksdotmochi@gmail.com</a
+          >.
+        </p>
+
+        <footer class="footer">
+          <div class="footer-inner">
+            <div>
+              <strong>Flipbook</strong> by MochiiWorks
+              <br />
+              <span class="muted"
+                >Built with React, Capacitor, and a lot of coffee.</span
+              >
+            </div>
+            <div class="footer-links">
+              <a href="privacy.html">Privacy</a>
+              <a href="terms.html">Terms</a>
+              <a href="mailto:mochiiworksdotmochi@gmail.com">Contact</a>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        const nav = document.getElementById("navDock");
+        if (!nav) return;
+
+        let ticking = false;
+        const update = () => {
+          if (window.scrollY > 40) nav.classList.add("scrolled");
+          else nav.classList.remove("scrolled");
+          ticking = false;
+        };
+
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (!ticking) {
+              requestAnimationFrame(update);
+              ticking = true;
+            }
+          },
+          { passive: true },
+        );
+
+        update();
+      })();
+    </script>
+
+    <script>
+      (function () {
+        const KEY = "flipbook.landing.theme";
+        const ORDER = ["light", "lamp", "dark"];
+        const ICONS = { light: "☀", lamp: "✦", dark: "◐" };
+        const toggle = document.getElementById("themeToggle");
+        if (!toggle) return;
+
+        const iconEl = toggle.querySelector(".theme-icon");
+
+        const current = () => {
+          if (document.documentElement.classList.contains("dark"))
+            return "dark";
+          if (document.documentElement.classList.contains("lamp"))
+            return "lamp";
+          return "light";
+        };
+
+        const apply = (theme) => {
+          document.documentElement.classList.remove("dark", "lamp");
+          if (theme !== "light") document.documentElement.classList.add(theme);
+          iconEl.textContent = ICONS[theme] || "☀";
+          toggle.setAttribute(
+            "title",
+            theme === "light"
+              ? "Light mode — click for Lamp"
+              : theme === "lamp"
+                ? "Lamp mode — click for Dark"
+                : "Dark mode — click for Light",
+          );
+          try {
+            localStorage.setItem(KEY, theme);
+          } catch (e) {}
+        };
+
+        const cycle = () => {
+          const idx = ORDER.indexOf(current());
+          const next = ORDER[(idx + 1) % ORDER.length];
+          apply(next);
+          toggle.classList.add("spinning");
+          setTimeout(() => toggle.classList.remove("spinning"), 500);
+        };
+
+        toggle.addEventListener("click", cycle);
+        apply(current());
+      })();
+    </script>
+  </body>
+</html>
