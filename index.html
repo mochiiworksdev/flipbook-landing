@@ -410,38 +410,33 @@
     </script>
 
     <!-- QR Code Generator -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/easyqrcodejs@4.4.0/dist/easy.qrcode.min.js"></script>
+    <!-- QR Code Generator -->
+    <script src="qrcode.min.js"></script>
     <script>
       (function () {
         const container = document.getElementById("qrCodeContainer");
         if (!container) return;
 
         if (typeof QRCode === "undefined") {
-          console.error("QRCode library failed to load from CDN.");
+          console.error("QR library failed to load.");
           container.innerHTML =
             '<span style="font-size:10px;color:#999;text-align:center;padding:4px;">QR lib<br>failed</span>';
           return;
         }
 
-        const apkUrl = "https://mochiiworks.itch.io/flipbook";
+        // QR now points to the download page — NOT itch.io
+        const downloadUrl =
+          "https://mochiiworksdev.github.io/flipbook-landing/download.html";
 
-        QRCode.toCanvas(
-          apkUrl,
-          {
-            width: 160,
-            margin: 1,
-            color: { dark: "#2E271B", light: "#FFFFFF" },
-          },
-          function (err, canvas) {
-            if (err) {
-              console.error("QR code generation failed:", err);
-              container.textContent = "QR error";
-              return;
-            }
-            container.innerHTML = "";
-            container.appendChild(canvas);
-          },
-        );
+        new QRCode(container, {
+          text: downloadUrl,
+          width: 160,
+          height: 160,
+          colorDark: "#2E271B",
+          colorLight: "#FFFFFF",
+          correctLevel: QRCode.CorrectLevel.H,
+        });
       })();
     </script>
   </body>

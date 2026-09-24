@@ -1127,3 +1127,58 @@ html.dark .screenshot-single:hover {
         max-width: 100%;
     }
 }
+
+/* ── DOWNLOAD PAGE ── */
+.download-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 24px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--surface) 92%, transparent);
+    margin: 28px 0 40px;
+    flex-wrap: wrap;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.download-card:hover {
+    border-color: var(--gold);
+    background: color-mix(in srgb, var(--surface) 88%, var(--gold) 12%);
+}
+
+.download-card__title {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 16px;
+}
+
+.download-card__meta {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.download-card .btn {
+    flex-shrink: 0;
+}
+
+.download-steps {
+    padding-left: 22px;
+    margin-bottom: 20px;
+}
+
+.download-steps li {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 8px;
+}
+
+.download-steps strong {
+    color: var(--ink);
+    font-weight: 600;
+}
