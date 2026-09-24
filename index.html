@@ -410,8 +410,39 @@
     </script>
 
     <!-- QR Code Generator -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-    <script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script>
+  (function () {
+    const container = document.getElementById("qrCodeContainer");
+    if (!container) return;
+
+    if (typeof QRCode === "undefined") {
+      console.error("QRCode library failed to load from CDN.");
+      container.innerHTML = '<span style="font-size:10px;color:#999;text-align:center;padding:4px;">QR lib<br>failed</span>';
+      return;
+    }
+
+    const apkUrl = "https://mochiiworks.itch.io/flipbook";
+
+    QRCode.toCanvas(
+      apkUrl,
+      {
+        width: 160,
+        margin: 1,
+        color: { dark: "#2E271B", light: "#FFFFFF" },
+      },
+      function (err, canvas) {
+        if (err) {
+          console.error("QR code generation failed:", err);
+          container.textContent = "QR error";
+          return;
+        }
+        container.innerHTML = "";
+        container.appendChild(canvas);
+      }
+    );
+  })();
+</script>
       (function () {
         const container = document.getElementById("qrCodeContainer");
         if (!container) return;
